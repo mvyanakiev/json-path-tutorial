@@ -12,16 +12,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StringParserTest {
 
-    private final StringExtractor parser = new StringExtractor();
+    private final StringExtractor extractor = new StringExtractor();
 
     @Test
     void getCreator() {
-        assertEquals("Jayway Inc.", parser.extractCreatorName());
+        assertEquals("Jayway Inc.", extractor.extractCreatorName());
     }
 
     @Test
     void getLocations() {
-        List<String> jsonpathCreatorLocation = parser.extractLocation();
+        List<String> jsonpathCreatorLocation = extractor.extractLocations();
         assertThat(jsonpathCreatorLocation.toString(), containsString("Malmo"));
         assertThat(jsonpathCreatorLocation.toString(), containsString("San Francisco"));
         assertThat(jsonpathCreatorLocation.toString(), containsString("Helsingborg"));
@@ -29,6 +29,6 @@ class StringParserTest {
 
     @Test
     void getCreatorByNode() throws JsonProcessingException {
-        assert("Jayway Inc.").equals(parser.byNode());
+        assert("Jayway Inc.").equals(extractor.byNode());
     }
 }

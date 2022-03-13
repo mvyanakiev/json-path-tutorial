@@ -10,16 +10,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class NodeExtractorTest {
 
-    private final NodeExtractor parser = new NodeExtractor();
+    private final NodeExtractor extractor = new NodeExtractor();
 
     @Test
     void getCreator() {
-        assertEquals("Jayway Inc.", parser.extractNameFromNode());
+        assertEquals("Jayway Inc.", extractor.extractNameFromNode());
     }
 
     @Test
     void getLocations() {
-        List<String> list = parser.extractLocationFromNode();
+        List<String> list = extractor.extractLocationsFromNode();
         assertThat(list.toString(), containsString("Malmo"));
         assertThat(list.toString(), containsString("San Francisco"));
         assertThat(list.toString(), containsString("Helsingborg"));

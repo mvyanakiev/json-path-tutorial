@@ -15,9 +15,9 @@ import static app.constants.Contents.jsonDataSourceString;
 public class StringExtractor {
     final static Logger log = LoggerFactory.getLogger(StringExtractor.class);
 
-    String jsonpathCreatorNamePath = "$['tool']['jsonpath']['creator']['name']";
-    String jsonpathCreatorLocationPath = "$['tool']['jsonpath']['creator']['location'][*]";
-    DocumentContext jsonContext = JsonPath.parse(jsonDataSourceString);
+    final String jsonpathCreatorLocationPath = "$['tool']['jsonpath']['creator']['location'][*]";
+    final String jsonpathCreatorNamePath = "$['tool']['jsonpath']['creator']['name']";
+    final DocumentContext jsonContext = JsonPath.parse(jsonDataSourceString);
 
     public String extractCreatorName() {
         String jsonpathCreatorName = jsonContext.read(jsonpathCreatorNamePath);
@@ -25,7 +25,7 @@ public class StringExtractor {
         return jsonpathCreatorName;
     }
 
-    public List<String> extractLocation() {
+    public List<String> extractLocations() {
         List<String> jsonpathCreatorLocation = jsonContext.read(jsonpathCreatorLocationPath);
         log.info("Extracted {} locations", jsonpathCreatorLocation.size());
         return jsonpathCreatorLocation;

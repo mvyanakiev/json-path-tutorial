@@ -14,13 +14,11 @@ public class NodeExtractor {
 
     final static Logger log = LoggerFactory.getLogger(StringExtractor.class);
 
-    final String jsonpathCreatorNamePath = "$.tool.jsonpath.creator.name";
-    final String jsonpathCreatorLocationPath = "$.tool.jsonpath.creator.location.*";
-
-    ObjectMapper mapper = new ObjectMapper();
-    JsonNode node;
+    private ObjectMapper mapper;
+    private JsonNode node;
 
     public NodeExtractor() {
+        this.mapper = new ObjectMapper();
         try {
             this.node = mapper.readTree(Paths.get(FILE_PATH + "dataSource.json").toFile());
         } catch (Exception ex) {
@@ -29,16 +27,18 @@ public class NodeExtractor {
     }
 
     public String extractNameFromNode() {
+        final String jsonpathCreatorNamePath = "$.tool.jsonpath.creator.name";
+
         String name = JsonPath.read(node.toString(), jsonpathCreatorNamePath);
         log.info("Name={}", name);
         return name;
     }
 
-    public List<String> extractLocationFromNode() {
+    public List<String> extractLocationsFromNode() {
+        final String jsonpathCreatorLocationPath = "$.tool.jsonpath.creator.location.*";
+
         List<String> list = JsonPath.read(node.toString(), jsonpathCreatorLocationPath);
         log.info("size={}", list.size());
         return list;
     }
-
-
 }
