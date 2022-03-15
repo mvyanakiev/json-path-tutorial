@@ -12,7 +12,7 @@ import java.util.List;
 public class NodeExtractor {
     private static final String FILE_PATH = "src/main/resources/";
 
-    final static Logger log = LoggerFactory.getLogger(StringExtractor.class);
+    final static Logger log = LoggerFactory.getLogger(NodeExtractor.class);
 
     private ObjectMapper mapper;
     private JsonNode node;
