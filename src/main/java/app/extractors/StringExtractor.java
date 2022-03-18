@@ -7,7 +7,6 @@ import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.List;
 
 import static app.constants.Contents.jsonDataSourceString;
@@ -38,5 +37,13 @@ public class StringExtractor {
         String name = node.get("tool").get("jsonpath").get("creator").get("name").asText();
         log.info("Creator name is: {}", name);
         return name;
+    }
+
+    public String changeValues() {
+        String changedValue = jsonDataSourceString.replace("Jayway Inc.", "New Creator Name");
+        DocumentContext changedJsonContext = JsonPath.parse(changedValue);
+        String jsonpathCreatorName = changedJsonContext.read(jsonpathCreatorNamePath);
+        log.info("Extracted creator: {}", jsonpathCreatorName);
+        return jsonpathCreatorName;
     }
 }

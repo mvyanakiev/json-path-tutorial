@@ -2,13 +2,11 @@ package app.extractors;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
-
-
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StringParserTest {
 
@@ -29,6 +27,11 @@ class StringParserTest {
 
     @Test
     void getCreatorByNode() throws JsonProcessingException {
-        assert("Jayway Inc.").equals(extractor.byNode());
+        assert ("Jayway Inc.").equals(extractor.byNode());
+    }
+
+    @Test
+    void changedValueInString() {
+        assertEquals("New Creator Name", extractor.changeValues());
     }
 }
