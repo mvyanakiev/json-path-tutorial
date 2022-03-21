@@ -24,4 +24,9 @@ class NodeExtractorTest {
         assertThat(list.toString(), containsString("San Francisco"));
         assertThat(list.toString(), containsString("Helsingborg"));
     }
+
+    @Test
+    void changedValue() {
+        assertEquals("CHANGED", extractor.changeValue("CHANGED"));
+    }
 }

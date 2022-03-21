@@ -43,7 +43,7 @@ public class StringExtractor {
         String changedValue = jsonDataSourceString.replace("Jayway Inc.", "New Creator Name");
         DocumentContext changedJsonContext = JsonPath.parse(changedValue);
         String jsonpathCreatorName = changedJsonContext.read(jsonpathCreatorNamePath);
-        log.info("Extracted creator: {}", jsonpathCreatorName);
+        log.info("Extract changed creator: {}", jsonpathCreatorName);
         return jsonpathCreatorName;
     }
 }
